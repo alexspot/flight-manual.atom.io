@@ -1,5 +1,39 @@
 // from primer-user-content
 
+.language_selector {
+    width: 200px;
+    background: #222;
+    color:  #eee;
+    line-height: 25px;
+    font-size: 14px;
+    padding: 0 10px;
+    cursor: pointer;
+}
+
+.languages {
+    display: none;
+    margin: 0.5em;
+    background: grey;
+    border: 1px solid black;
+}
+
+.languages > li {
+    width: 200px;
+    background: #eee;
+    line-height: 25px;
+    font-size: 14px;
+    padding: 0 10px;
+    cursor: pointer;
+    color: black;
+}
+
+.languages > li:hover {
+    background: #aaa;
+    a {
+      color: black;
+    }
+}
+
 .highlight  {
   background: #ffffff;
 

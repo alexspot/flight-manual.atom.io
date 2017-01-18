@@ -1,5 +1,64 @@
 (function() {
+
+
   var $body = $('body')
+
+  var searchForm = $('#articles-search');
+
+
+
+  // window.addEventListener("submit", function(e) {
+    //   e.preventDefault();
+    //   // search(input.value);
+    //   alert('fdfdf11111');
+    // });
+  window.renderResults = function(results) {
+  results.forEach(function(result) {
+    var li = document.createElement("li");
+    var a = document.createElement("a");
+    a.href = result.id;
+    a.innerHTML = result.title;
+    li.appendChild(a);
+    resultsContainer.appendChild(li);
+  });
+};
+
+
+  window.onload = function(){
+      $('.version_item').click(function(){
+          window.location.href = $(this).val();
+      })
+      $('.language_item').click(function(){
+          window.location.href = $(this).val();
+      })
+  }
+
+  window.searchFunction = function(query) {
+    preventDefault();
+    window.search(query);
+    results = index.search(query).map(function(i) { return findDocumentById(i.ref); });
+    window.renderResults
+  }
+
+
+  window.clickLanguageSelector = function() {
+    $('.language_selector').toggleClass('active');
+    $('.languages').slideToggle(200);
+  }
+
+    $('#speed').change(function() {
+        window.location.href = $(this).val();
+    });
+
+  // trigger.click(function() {
+  //     trigger.toggleClass('active');
+  //     list.slideToggle(200);
+  // });
+
+  // this is optional to close the list while the new page is loading
+  // list.click(function() {
+  //     trigger.click();
+  // });
 
   window.detectPlatform = function () {
     $('body').addClass('platform-switch')

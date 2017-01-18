@@ -11,9 +11,20 @@
         <%= renderp '/includes/search.html' %>
 
         <div class="toc">
-          <%= renderp '/includes/toc.html', :heading => 'h4', :title => @item[:title] %>
+            <% unless versions_of(@item).empty? %>
+            <label for="version">Select version</label>
+            <select name="version" id="version">
+                <% versions_of(@item).each do |version| %>
+                <option class="version_item" value="<%= version.path %>"><%= version[:version] %></option>
+                <% end %>
+            </select>
+            <% end %>
+          <% if language_code_of(@item) == 'ru' %>
+            <%= renderp '/includes/toc_ru.html', :heading => 'h4', :title => @item[:title] %>
+          <% else %>
+            <%= renderp '/includes/toc.html', :heading => 'h4', :title => @item[:title] %>
+          <% end %>
         </div>
-
         <% section = lookup_section('toc', @item[:title]) %>
         <h1 class="document-title">
           <%= renderp '/includes/platform-nav.html' %>
@@ -22,9 +33,9 @@
             <span class="octicon octicon-pencil"></span> Improve this page
           </a>
         </h1>
-
         <div class="markdown-body document-content">
           <% section = lookup_section('toc', @item[:title]) %>
+            id is: <%= @item.identifier%>
           <%= yield %>
         </div>
       </div>

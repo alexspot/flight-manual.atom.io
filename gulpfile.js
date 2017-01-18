@@ -55,7 +55,9 @@ gulp.task("javascript_babel", function () {
 gulp.task("javascript_workers", function () {
   return gulp.src([
     "assets/javascripts/workers/*.js",
-    "assets/vendor/lunr.js/lunr.min.js"
+    "assets/vendor/lunr.js/lunr.min.js",
+    "assets/vendor/lunr.js/lunr.ru.min.js",
+    "assets/vendor/lunr.js/lunr.stemmer.support.js"
     ])
     .pipe(gulp.dest("output/assets/javascripts/"));
 });

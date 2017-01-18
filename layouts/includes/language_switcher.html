@@ -1,0 +1,19 @@
+<!-- <select id="language_selector" onChange="clickLanguageSelector()">
+  <option value="en">English</option>
+  <option value="ru">Russian</option>
+</select> -->
+<!-- <select id="box1" onChange="myNewFunction(this);" > -->
+<select>
+    <% translations_of(@item).each do |translation| %>
+      <% if (@item[:canonical_title] == translation[:canonical_title]) && (@item[:version] == translation[:version]) %>
+        <option class="language_item" value="<%= translation.path %>"><%= language_name_of(translation) %></option>
+      <% end %>
+    <% end %>
+    <option>
+</select>
+
+  <!-- <select id="box1" onChange="myNewFunction(this);" > -->
+  <!-- <option value="98">dog</option>
+    <option value="7122">cat
+    <option value="142">bird</option>
+</select> -->

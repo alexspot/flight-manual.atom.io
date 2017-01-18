@@ -1,9 +1,28 @@
 // TODO: port from ES5 to babel at some point
 
 importScripts('lunr.min.js');
+importScripts('lunr.stemmer.support.js');
+importScripts('lunr.ru.min.js');
+
+var trimmerEnRu = function (token) {
+    return token
+        .replace(/^[^\wа-яёА-ЯЁ]+/, '')
+        .replace(/[^\wа-яёА-ЯЁ]+$/, '');
+};
+
+lunr.Pipeline.registerFunction(trimmerEnRu, 'trimmer-enru');
+lunr.stopWordFilter.stopWords =
+    lunr.stopWordFilter.stopWords.union(
+        lunr.ru.stopWordFilter.stopWords);
 
 // create lunr.js search index specifying that we want to index the title and body fields of documents.
 var lunr_index = lunr(function() {
+    this.pipeline.reset();
+    this.pipeline.add(
+        trimmerEnRu,
+        lunr.stopWordFilter,
+        lunr.stemmer,
+        lunr.ru.stemmer)
       this.field('title', { boost: 10 });
       this.field('body');
       this.ref('id');

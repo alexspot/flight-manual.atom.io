@@ -1,6 +1,6 @@
 {
   "entries": [
-    <% @items.find_all('/*/*/*.{asciidoc,md}').reject { |item| item[:exclude_from_search] }.each do |item| %>
+    <% @items.find_all('/*/*/*/*.{asciidoc,md}').reject { |item| item[:exclude_from_search] }.each do |item| %>
       <% if item[:title] %>
         <% @clean_body = compress(safe_embed(item.compiled_content)) %>
         {

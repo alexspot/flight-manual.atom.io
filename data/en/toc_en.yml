@@ -1,0 +1,22 @@
+Chapters:
+  Behind Atom:
+    - Configuration API
+    - Keymaps In-Depth
+    - Scoped Settings, Scopes and Scope Descriptors
+    - Serialization in Atom
+    - Developing Node Modules
+    - Interacting With Other Packages Via Services
+    - Maintaining Your Packages
+    - Summary
+
+Appendices:
+  Resources:
+    - Glossary
+
+  Shadow DOM:
+    - Removing Shadow DOM styles
+
+  Upgrading to 1.0 APIs:
+    - Upgrading Your Package
+    - Upgrading Your UI Theme Or Package Selectors
+    - Upgrading Your Syntax Theme
